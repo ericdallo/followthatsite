@@ -1,0 +1,77 @@
+@import 'fonts';
+
+body {
+    background-color: #F5F5F5;
+    background-image: linear-gradient(30deg, white 12%, transparent 12.5%, transparent 87%, white 87.5%, white),
+    linear-gradient(150deg, white 12%, transparent 12.5%, transparent 87%, white 87.5%,white),
+    linear-gradient(30deg, white 12%, transparent 12.5%, transparent 87%, white 87.5%, white),
+    linear-gradient(150deg, white 12%, transparent 12.5%, transparent 87%, white 87.5%, white),
+    linear-gradient(60deg, #F0F0F0 25%, transparent 25.5%, transparent 75%, #F0F0F0 75%, #F0F0F0),
+    linear-gradient(60deg, #F0F0F0 25%, transparent 25.5%, transparent 75%, #F0F0F0 75%, #F0F0F0);
+    background-size:80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
+.explanation {
+    
+    width: 100%;
+    padding-left: 2em;
+    font-family: "museo_sans", Helvetica, sans-serif;
+    font-size: 18pt;
+    margin-bottom: 2em;
+    list-style: decimal;
+
+    li {
+        line-height: 2em;
+        color: #555;
+    }
+}
+
+.main-content {
+    width: 40%;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+
+    .user-form {
+        height: 3em;
+        position: relative;
+
+        .username {
+            width: 100%;
+            height: 100%;
+            color: #999;
+            font-size: 18pt;
+            border: none;
+            font-family: "museo_sans", Helvetica, sans-serif;
+            box-shadow: 5px 5px 10px #e2e2e2;
+            text-align: center;
+
+            &:focus {
+                outline: none ;
+                box-shadow: 10px 10px 10px #e2e2e2;
+            }
+        }
+
+        .confirm-username {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10%;
+            height: calc(100% + 2px);
+            border: none;
+            background-color: #2ecc71;
+            background-image: url('/images/arrow.svg');
+            background-size: 2em;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            transition: background-color 0.1s;
+
+            &:hover {
+                background-color: #27ae60;
+            }
+        }
+    }
+
+}

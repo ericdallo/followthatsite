@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Follow that site - {{title}}</title>
+    <title>Follow that site - {{title}}</title>
+    {% style "/css/reset.css" %}
+    {% style "/css/index.css" %}
 </head>
 <body>
-
+    <header></header>
+    <main class="main-content">
+        <ol class="explanation">
+            <li>Sign up</li>
+            <li>Save your favorite sites</li>
+            <li>Be notified when a site change</li>
+        </ol>
+        <form method="POST" action="/users" class="user-form">
+            <input name="username" placeholder="Your username here" class="username">
+            <input type="submit" class="confirm-username" value="">
+        </form>
+    </main>
+    <footer></footer>
 </body>
 </html>
