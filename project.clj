@@ -5,6 +5,7 @@
             [compojure "1.5.1"]
             [http-kit "2.1.18"]
             [ring/ring-defaults "0.2.1"]
+            [ring/ring-devel "1.5.0"]
             [selmer "1.0.7"]
           ]
   :main followthatsite.core)

@@ -1,12 +1,17 @@
 (ns followthatsite.core
+  (:use [org.httpkit.server :only [run-server]])
   (:require [compojure.core :refer :all]
-  			[ring.middleware.defaults :refer :all]
-            [org.httpkit.server :refer [run-server]]
-            [selmer.parser :refer [render-file]]))
+            [compojure.handler :refer [site]]
+            [ring.middleware.defaults :refer :all]
+            [selmer.parser :refer [render-file]]
+            [ring.middleware.reload :refer [wrap-reload]]))
 
-(defroutes followthatsite
-  (GET "/" [] 
-  	(render-file "templates/index.html" {:name "Greg"})))
+(selmer.parser/set-resource-path! (clojure.java.io/resource "templates"))
+
+(defroutes all-routes
+  (GET "/" []
+    (render-file "index.html" {:title "Home"})))
 
 (defn -main []
-  (run-server followthatsite {:port 5000}))
+  (let [handler (wrap-reload (site #'all-routes))]
+    (run-server handler {:port 5000})))
