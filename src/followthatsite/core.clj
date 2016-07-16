@@ -13,8 +13,8 @@
 (defroutes all-routes
   (GET "/" []
     (render-file "index.html" {:title "Home"} ))
-  (POST "/users" []
-    (create-user))
+  (POST "/users" [username]
+    (create-user username))
   (route/resources "/")
   (route/not-found "Not found"))
 
