@@ -4,17 +4,17 @@
   (:require [compojure.core :refer :all]
             [compojure.handler :refer [site]]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer :all]
-            [selmer.parser :refer [render-file]]
             [ring.middleware.reload :refer [wrap-reload]]))
 
 (selmer.parser/set-resource-path! (clojure.java.io/resource "templates"))
 
 (defroutes all-routes
   (GET "/" []
-    (render-file "index.html" {:title "Home"} ))
+    (show-home))
   (POST "/users" [username]
     (create-user username))
+  (GET "/:username" [username]
+    (find-user username))
   (route/resources "/")
   (route/not-found "Not found"))
 
