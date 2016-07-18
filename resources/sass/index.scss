@@ -42,12 +42,12 @@
             font-size: 18pt;
             border: none;
             font-family: "museo_sans", Helvetica, sans-serif;
-            box-shadow: 5px 5px 10px #e2e2e2;
+            box-shadow: 5px 5px 10px $light-gray;
             text-align: center;
 
             &:focus {
                 outline: none ;
-                box-shadow: 10px 10px 10px #e2e2e2;
+                box-shadow: 10px 10px 10px $light-gray;
             }
         }
 
@@ -58,7 +58,7 @@
             width: 10%;
             height: calc(100% + 2px);
             border: none;
-            background-color: #2ecc71;
+            background-color: $flat-green;
             background-image: url('/images/arrow.svg');
             background-size: 2em;
             background-position: 50%;
