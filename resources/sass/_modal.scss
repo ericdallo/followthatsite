@@ -1,0 +1,98 @@
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    text-align: center;
+    display: none;
+    background-color: rgba(0,0,0,0.6);
+
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin: 0;
+    }
+    .content {
+        text-align: left;
+        display: inline-block;
+        background-color: #27ae60;
+        box-sizing: border-box;
+        color: white;
+        position: relative;
+        width: 500px;
+        padding: 20px;
+
+        .modal-title {
+            font-size: 18pt;
+            
+            margin-bottom: 1em;
+        }
+
+       .close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 15px;
+            height: 15px;
+            color: white;
+            font-size: 18pt;
+            text-decoration: none;
+        }
+     }
+}
+:root {
+
+    body {
+        
+    }
+
+    span[id="start"]:target ~ .page-container {
+        filter: none;
+        -webkit-filter: none;
+    }
+
+    .target {
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        &:target {
+
+            ~ .modal {
+                display: block;
+                transform: scale(1, 1);
+            }
+
+            ~ .page-content {
+                filter: blur(5px);
+                -webkit-filter: blur(5px);
+                filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' ><filter id='blur5'><feGaussianBlur in='SourceGraphic' stdDeviation='5' /></filter></svg>#blur5"); // for Firefox
+                filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5');
+            }
+        }
+    }
+    .modal {
+        display: block;
+        background-color: transparent;
+        transition: transform 0.3s cubic-bezier(0.5, -0.5, 0.5, 1.5);
+        transform-origin: center center;
+        transform: scale(0, 0);
+    }
+}
+/* Fallback for IE8 */
+.modal.is-expanded {
+    display: block;
+}
+.modal.is-expanded > .content {
+    top: 50%;
+    margin-top: -45px;
+}

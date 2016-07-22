@@ -1,19 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Follow that site - Profile</title>
-    {% style "/css/reset.css" %}
-    {% style "/css/profile.css" %}
-</head>
-<body>
-    <header class="header-content">
-        <h1 class="title"><a href="/">Follow that site !</a></h1>
-    </header>
-    <main>
-        <section class="card">
-            <h1> You have no sites saved</h1>
-        </section>
-        <button class="add-site"></button>
-    </main>
-</body>
-</html>
+{% extends "page.html"%}
+{% block title %}Profile{% endblock%}
+{% block css %}profile{% endblock%}
+{% block js %}profile{% endblock%}
+{% block main %}
+
+{% include "modal-start.html" with id="add" title="Add a site"%}
+	<form method="POST" action="/{{name}}" class="site-form">
+		<div class="mandatory">
+			<input name="site-url" placeholder="Site URL" class="url">
+			<img src="" alt="site icon" class="icon" onerror="this.style.display='none'">
+		</div>
+	    <input name="site-name" placeholder="Site Name" class="name">
+	    <input type="submit" class="confirm-site" value="">
+	</form>
+    
+{% include "modal-end.html" %}
+{% include "page-start.html" %}
+    <section class="card">
+        <h1> You have no sites saved</h1>
+    </section>
+    <a href="#add" class="add-site" ></a>
+{% include "page-end.html" %}
+{% endblock %}

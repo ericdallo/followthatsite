@@ -1,18 +1,11 @@
 @import 'base';
+@import 'modal';
+@import 'buttons';
+@import 'text-fields';
 
 .add-site {
-    position: absolute;
-    bottom: 2em;
-    right: 2em;
-    width: 3.5em;
-    height: 3.5em;
-    border: none;
-    border-radius: 50%;
-    background: $flat-green url('/images/add.svg') no-repeat 50%;
-    background-size: 2em;
-    cursor: pointer;
+    @extend .circular-add-button;
     box-shadow: 5px 5px 10px $medium-gray;
-    transition: transform 0.2s, box-shadow 0.2s;
 
     &:hover {
         transform: translate(-.2em, -.2em);
@@ -22,4 +15,31 @@
     &:focus {
         outline: none ;
     }
+}
+
+.site-form {
+    position: relative;
+    .url {
+        @extend .text-field;
+    }
+    .icon {
+        position: absolute;
+        top: 1em;
+        left: 1em;
+        display: none;
+        width: 16px;
+        height: 16px;
+
+    }
+    .name {
+        @extend .text-field;
+    }
+
+    .confirm-site {
+        @extend .circular-add-button;
+        bottom: -3.5em;
+        background-color: $flat-blue;
+        background-image: url('/images/check.svg');
+    }
+    
 }

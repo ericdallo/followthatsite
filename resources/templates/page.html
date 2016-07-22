@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Follow that site - {% block title %}{%endblock%}</title>
+    {% style "/css/reset.css" %}
+    {% script "/js/jquery.js"%}
+    {% script "/js/base.js"%}
+    <link rel="stylesheet" type="text/css" href="/css/{% block css %}{%endblock%}.css">
+    <script type="text/javascript" src="/js/{% block js %}{%endblock%}.js"></script>
+</head>
+<body class="preload">
+    <header class="header-content">
+        <h1 class="title"><a href="/">Follow that site !</a></h1>
+    </header>
+    <main class="main-content">
+        {% block main %}
+        {% endblock %}
+    </main>
+    <footer></footer>
+</body>
+</html>
