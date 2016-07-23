@@ -4,21 +4,21 @@
 {% block js %}profile{% endblock%}
 {% block main %}
 
-{% include "modal-start.html" with id="add" title="Add a site"%}
-	<form method="POST" action="/{{name}}" class="site-form">
-		<div class="mandatory">
-			<input name="site-url" placeholder="Site URL" class="url">
-			<img src="" alt="site icon" class="icon" onerror="this.style.display='none'">
-		</div>
-	    <input name="site-name" placeholder="Site Name" class="name">
-	    <input type="submit" class="confirm-site" value="">
-	</form>
-    
-{% include "modal-end.html" %}
-{% include "page-start.html" %}
-    <section class="card">
-        <h1> You have no sites saved</h1>
-    </section>
-    <a href="#add" class="add-site" ></a>
-{% include "page-end.html" %}
+	{% include "modal-start.html" with modal-id="add" modal-title="Add a site" %}
+		<form method="POST" action="/{{name}}" class="site-form">
+			<div class="mandatory">
+				<input name="site-url" placeholder="Site URL" class="url">
+				<img alt="site icon" class="icon" onerror="this.style.display='none'">
+			</div>
+		    <input name="site-name" placeholder="Site Name" class="name">
+		    <input type="submit" class="confirm-site" value="">
+		</form>
+	    
+	{% include "modal-end.html" %}
+	{% include "page-start.html" %}
+	    <section class="card">
+	        <h1> You have no sites saved</h1>
+	    </section>
+	    <a href="#add" class="add-site" ></a>
+	{% include "page-end.html" %}
 {% endblock %}

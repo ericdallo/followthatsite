@@ -1,5 +1,5 @@
-(ns followthatsite.test.core
-  (:use [followthatsite.core])
+(ns followthatsite.test.routes
+  (:use [followthatsite.routes])
   (:use [clojure.test]))
 
 (deftest replace-me ;; FIXME: write

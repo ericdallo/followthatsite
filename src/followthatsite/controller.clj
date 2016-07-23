@@ -1,4 +1,4 @@
-(ns followthatsite.views
+(ns followthatsite.controller
   (:require [followthatsite.model.user :as user]
             [followthatsite.model.site :as site]
             [compojure.core :refer :all]

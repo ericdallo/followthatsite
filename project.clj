@@ -30,4 +30,4 @@
                   :subname "//localhost/followthatsite"
                   :user "root"
                   :password ""}}
-  :main followthatsite.core)
+  :main followthatsite.routes)

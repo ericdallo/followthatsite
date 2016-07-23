@@ -1,6 +1,6 @@
-(ns followthatsite.core
+(ns followthatsite.routes
   (:use [org.httpkit.server :only [run-server]]
-        [followthatsite.views])
+        [followthatsite.controller])
   (:require [compojure.core :refer :all]
             [compojure.handler :refer [site]]
             [compojure.route :as route]
