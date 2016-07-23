@@ -14,12 +14,13 @@
     (user/create {:name username}))
   (redirect (str "/" username)))
 
-(defn find-user [username]
+(defn find-user-profile [username]
   "Find the user by name and show his profile"
   (let [user (user/find-by-name username)]
     (if (empty? user)
       (redirect "/")
       (render-file "profile.html" user))))
+    
 
 (defn create-site [username name url]
   "Creates a site for a user and redirect to his profile"

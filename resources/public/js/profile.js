@@ -4,13 +4,40 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
-    var timer;
 
+    $(".card-container .url").each(function(i) {
+        var $cardContent = $(this.parentElement);
+        var $card = $(this.parentElement.parentElement);
+
+        var url = baseURL(this.innerText);
+        url = verifyHttp(url);
+
+        $.getJSON({
+            async: true,
+            url: "http://whateverorigin.org/get?url=" + encodeURIComponent(url) + "&callback=?",
+            success: function (response) {
+                var $metaTheme = $(response.contents).filter("meta[name='theme-color']")[0];
+                if ($metaTheme != undefined) {
+                    $card.css('background-color', $metaTheme.content);
+                    $card.css('border-color', $metaTheme.content);
+                    var rgb = hexToRgb($metaTheme.content);
+                    var brightness = Math.round(((parseInt(rgb.r) * 299) + (parseInt(rgb.g) * 587) + (parseInt(rgb.b) * 114)) /1000);
+                    if (brightness > 190) {
+                        $cardContent.css('color', 'black');
+                    } else {
+                        $cardContent.css('color', 'white');
+                    }
+                }
+            },
+        });
+        var $imgUrl = $card.find('.icon');
+        $imgUrl.attr('src', url + '/favicon.ico');
+    });
+
+    var timer;
     $(".site-form .url").keyup( function() { 
         var siteUrl = baseURL(this.value);
-        if (!/^http:\/\//.test(siteUrl)) {
-            siteUrl = "http://" + siteUrl;
-        }
+        siteUrl = verifyHttp(siteUrl);
         var $icon = $('.site-form .icon');
         $icon.attr('src', siteUrl + '/favicon.ico');
         $icon.show();
@@ -21,6 +48,13 @@ $(document).ready(function() {
         }
     });
 });
+
+function verifyHttp(siteUrl) {
+    if (!/^http:\/\//.test(siteUrl)) {
+        siteUrl = "http://" + siteUrl;
+    }
+    return siteUrl;
+}
 
 function baseURL(url) {
     var domain;
@@ -44,4 +78,13 @@ function baseURLName(url) {
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
 }

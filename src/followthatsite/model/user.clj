@@ -8,6 +8,7 @@
 
 (defn find-by-name [name]
 	(first 
-		(select e/users 
+		(select e/users
+			(with e/sites)
 			(where {:name name})
 			(limit 1))))
