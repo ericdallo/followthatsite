@@ -9,3 +9,4 @@
 /target
 .sass-cache
 .lein*
+/resources/public/css
