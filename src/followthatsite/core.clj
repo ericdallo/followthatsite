@@ -15,6 +15,9 @@
     (create-user username))
   (GET "/:username" [username]
     (find-user username))
+  (POST "/:username" [username site-name site-url]
+    (create-site username site-name site-url))
+
   (route/resources "/")
   (route/not-found "Not found"))
 

@@ -2,9 +2,16 @@
   (:use korma.core
         followthatsite.db))
 
-(declare users)
+(declare users sites )
 
 (defentity users
   (pk :id)
   (table :user)
-  (entity-fields :name))
+  (entity-fields :id :name)
+  (has-many sites))
+
+(defentity sites
+	(pk :id)
+  (belongs-to users)
+  (table :site)
+  (entity-fields :name :url))

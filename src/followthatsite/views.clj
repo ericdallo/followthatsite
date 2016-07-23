@@ -1,5 +1,6 @@
 (ns followthatsite.views
   (:require [followthatsite.model.user :as user]
+            [followthatsite.model.site :as site]
             [compojure.core :refer :all]
             [selmer.parser :refer [render-file]]
             [ring.util.response :refer [redirect]]))
@@ -19,3 +20,12 @@
     (if (empty? user)
       (redirect "/")
       (render-file "profile.html" user))))
+
+(defn create-site [username name url]
+  "Creates a site for a user and redirect to his profile"
+  (let [user (user/find-by-name username)]
+    (if (and (not (empty? user)) (empty? (site/find-by-url url)))
+      (site/create {:url url, 
+                    :name name, 
+                    :user_id (get user :id)})))
+  (redirect (str "/" username)))
