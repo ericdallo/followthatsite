@@ -17,19 +17,25 @@
   {% include "modal-end.html" %}
   {% include "page-start.html" %}
     <section class="cards">
-      <h2 class="title">Saved Sites</h2>
+      {% if site|not-empty %}
+        <h2 class="title">Saved Sites</h2>
 
-      {% for s in site %}
-        <article class="card-container">
-          <header>
-            <img alt="{{s.name}} icon" class="icon" onerror="this.style.display='none'">
-            <h3 class="name">{{s.name}}</h2>
-          </header>
-          <div class="content">
-            <p class="url">{{s.url}}</p>
-          </div>
-        </article>
-      {% endfor %}
+        {% for s in site %}
+          <article class="card-container">
+            <header>
+              <img alt="{{s.name}} icon" class="icon" onerror="this.style.display='none'">
+              <h3 class="name">{{s.name}}</h2>
+              <button data-site-id="{{s.id}}" data-username="{{name}}" class="delete"></button>
+            </header>
+            <div class="content">
+              <p class="url">{{s.url}}</p>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <h2 class="title">You have no sites saved</h2>
+        <p class="tip">Add one now below</p>
+      {% endif%}
     </section>
 
     <a href="#add" class="add-site" ></a>

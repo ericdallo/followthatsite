@@ -14,9 +14,11 @@
   (POST "/users" [username]
     (create-user username))
   (GET "/:username" [username]
-    (find-user username))
+    (find-user-profile username))
   (POST "/:username" [username site-name site-url]
     (create-site username site-name site-url))
+  (DELETE "/:username/sites/:site-id" [username site-id]
+    (delete-site-for username site-id))
 
   (route/resources "/")
   (route/not-found "Not found"))

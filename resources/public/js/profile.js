@@ -47,6 +47,19 @@ $(document).ready(function() {
             $siteName.val(capitalizeFirstLetter(baseURLName(siteUrl)));
         }
     });
+
+    $(".card-container .delete").on('click', function() {
+        $(this).parent().parent(".card-container").fadeOut();
+        var username = $(this).data("username");
+        var siteId = $(this).data("site-id");
+        $.ajax({
+            url: "/" + username + "/sites/" + siteId,
+            type: "DELETE",
+            success: function() {
+                
+            }
+        });
+    });
 });
 
 function verifyHttp(siteUrl) {

@@ -12,7 +12,7 @@
   "Creates a user and redirect to his profile"
   (if (empty? (user/find-by-name username))
     (user/create {:name username}))
-  (redirect (str "/" username)))
+  (redirect username))
 
 (defn find-user-profile [username]
   "Find the user by name and show his profile"
@@ -29,4 +29,12 @@
       (site/create {:url url, 
                     :name name, 
                     :user_id (get user :id)})))
-  (redirect (str "/" username)))
+  (redirect username))
+
+(defn delete-site-for [username site-id]
+  "Delete the site by id and redirect to username's profile"
+  (let [user (user/find-by-name username)]
+    (if (and (not (empty? user)) (not (empty? (site/find-by-id site-id))))
+      (site/delete-by-id site-id)))
+  (redirect username))
+
