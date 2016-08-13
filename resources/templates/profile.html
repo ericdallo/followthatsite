@@ -13,31 +13,31 @@
         <input name="site-name" placeholder="Site Name" class="name">
         <input type="submit" class="confirm-site" value="">
     </form>
-      
   {% include "modal-end.html" %}
   {% include "page-start.html" %}
     <section class="cards">
       {% if site|not-empty %}
-        <h2 class="title">Saved Sites</h2>
+        <h2 class="text-center title">Saved sites</h2>
 
         {% for s in site %}
-          <article class="card-container">
+          <article class="card-container" tabindex="{{forloop.counter}}">
             <header>
               <img alt="{{s.name}} icon" class="icon" onerror="this.style.display='none'">
               <h3 class="name">{{s.name}}</h2>
               <button data-site-id="{{s.id}}" data-username="{{name}}" class="delete"></button>
             </header>
             <div class="content">
-              <p class="url">{{s.url}}</p>
+              <p id="card-site-url"  class="text-center">{{s.url}}</p>
+              <p class="updated-at"><time>2016-06-02</time></p>
             </div>
           </article>
         {% endfor %}
       {% else %}
-        <h2 class="title">You have no sites saved</h2>
-        <p class="tip">Add one now below</p>
+        <h2 class="text-center title">You have no sites saved</h2>
+        <p class="text-center tip">Add one now below</p>
       {% endif%}
     </section>
 
-    <a href="#add" class="add-site" ></a>
+    <a href="#add" class="add-site" tabindex="{{site|length|add:1 }}"></a>
   {% include "page-end.html" %}
 {% endblock %}

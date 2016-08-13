@@ -5,7 +5,9 @@ $.ajaxSetup({
 
 $(document).ready(function() {
 
-    $(".card-container .url").each(function(i) {
+    $(".card-container #card-site-url").each(function(i) {
+        maskLargeUrl($(this));
+
         var $cardContent = $(this.parentElement);
         var $card = $(this.parentElement.parentElement);
 
@@ -61,6 +63,13 @@ $(document).ready(function() {
         });
     });
 });
+
+function maskLargeUrl($siteUrl) {
+    if ($siteUrl.text().length > 34) {
+        var simpleSiteUrl = $siteUrl.text().substring(0,30) + "...";
+        $siteUrl.text(simpleSiteUrl);
+    }
+}
 
 function verifyHttp(siteUrl) {
     if (!/^http:\/\//.test(siteUrl)) {

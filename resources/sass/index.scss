@@ -1,14 +1,5 @@
 @import 'base';
 
-.header-content {    
-    padding: 1em;
-
-    .title {
-        font-family: "museo_sans", Helvetica, sans-serif;
-        font-size: 16pt;
-    }
-}
-
 .main-content {
     width: 40%;
     position: absolute;
@@ -43,7 +34,6 @@
             border: none;
             font-family: "museo_sans", Helvetica, sans-serif;
             box-shadow: 5px 5px 10px $light-gray;
-            text-align: center;
 
             &:focus {
                 outline: none ;
