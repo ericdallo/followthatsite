@@ -1,0 +1,20 @@
+{
+  "name": "followthatsite",
+  "homepage": "https://github.com/ericdallo/followthatsite",
+  "description": "Follow that site",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bower": "*",
+    "install": "1.0.4",
+    "async-define": "https://github.com/elo7/async-define.git#v1.2.0",
+    "events-amd": "1.1.2",
+    "ajax-amd": "1.2.1",
+    "doc-amd": "1.0.15"
+  }
+}

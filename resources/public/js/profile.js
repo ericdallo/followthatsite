@@ -1,11 +1,6 @@
-$.ajaxSetup({
-    scriptCharset: "utf-8",
-    contentType: "text/html; charset=utf-8"
-});
+define(['doc'], function($) {
 
-$(document).ready(function() {
-
-    $(".card-container #card-site-url").each(function(i) {
+    $('.card-container #card-site-url').each(function(i) {
         maskLargeUrl($(this));
 
         var $cardContent = $(this.parentElement);
@@ -37,7 +32,7 @@ $(document).ready(function() {
     });
 
     var timer;
-    $(".site-form .url").keyup( function() { 
+    $('.site-form .url').on('keyup', function() { 
         var siteUrl = baseURL(this.value);
         siteUrl = verifyHttp(siteUrl);
         var $icon = $('.site-form .icon');
@@ -63,6 +58,8 @@ $(document).ready(function() {
         });
     });
 });
+
+
 
 function maskLargeUrl($siteUrl) {
     if ($siteUrl.text().length > 34) {

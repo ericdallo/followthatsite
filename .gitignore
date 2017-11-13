@@ -10,3 +10,5 @@
 .sass-cache
 .lein*
 /resources/public/css
+.bundle/
+bower_components
